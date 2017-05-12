@@ -1,0 +1,21 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://arsenalperformingarts.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://arsenalperformingarts.org$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://data.arsenalperformingarts.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://data.arsenalperformingarts.org$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.arsenalperformingarts.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.arsenalperformingarts.org$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.data.arsenalperformingarts.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.data.arsenalperformingarts.org$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php
+RewriteCond %{HTTP_HOST} ^www\.arsenalperformingarts\.org$
+RewriteRule ^/?$ "http\:\/\/arsenalperformingarts\.org\/" [R=301,L]
+
+
+ErrorDocument 404 http://www.arsenalperformingarts.org/404page.php
